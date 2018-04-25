@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/banner.css">
+	<title></title>
+<style type="text/css">
+		#nav{
+			background: #262626;
+			margin-top:20px;
+			text-align: center;
+		}
+		a{
+			    padding: 1em;
+    margin-left: 2em;
+			text-decoration: none;
+			display: inline-block;
+			border:2px solid #bd13ba;
+			line-height: 2em;
+			font:20px "微软雅黑";
+			font-weight: bold;
+			color: #fff;
+    border-radius: 10px;
+		}
+		a:hover{
+			background:#BD13BA;
+			
+		}
+	</style>
+</head>
+<body style="background-color:#262626">
+	
+    <div id="nav">
+    	<a href="index.html" style="margin-left: 0px;">Home</a>
+		<a href="pic.html">Pictures</a>
+		<a href="in.html">Place of Interested</a>
+		<a href="vid.html">Video</a>
+		
+		
+	</div>
+	<div class="banner" id="banner2" style="margin: 50px auto;">
+		<div class="banner-view"></div>
+		<div class="banner-btn" display="none"></div>
+		<div class="banner-number"></div>
+		<div class="banner-progres"></div>
+	</div>
+
+	<audio src="bg.mp3" id="Jaudio" class="media-audio" autoplay preload loop="loop"></audio>  
+<script type="text/javascript" src="js/banner.js"></script>
+<script type="text/javascript">
+
+
+		
+	/*
+	** 只填两个必要参数也是可以的
+	*/
+	var banenr2 = new FragmentBanner({
+		container : "#banner2",//选择容器 必选
+		imgs : ['images/a1.jpg','images/a2.jpg','images/a3.jpg'],//图片集合 
+	});
+function audioAutoPlay(id){  
+    var audio = document.getElementById(id),  
+        play = function(){  
+            audio.play();  
+            document.removeEventListener("touchstart",play, false);  
+        };  
+    audio.play();  
+    document.addEventListener("WeixinJSBridgeReady", function () {  
+        play();  
+    }, false);  
+    document.addEventListener('YixinJSBridgeReady', function() {  
+        play();  
+    }, false);  
+    document.addEventListener("touchstart",play, false);  
+}  
+audioAutoPlay('Jaudio');
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/popup.css">
+	<title></title>
+	<style type="text/css">
+		#nav{
+			background: #262626;
+			margin-top:20px;
+			text-align: center;
+		}
+		a{
+			    padding: 1em;
+    margin-left: 2em;
+			text-decoration: none;
+			display: inline-block;
+			border:2px solid #bd13ba;
+			line-height: 2em;
+			font:20px "微软雅黑";
+			font-weight: bold;
+			color: #fff;
+    border-radius: 10px;
+		}
+		a:hover{
+			background:#BD13BA;
+			
+		}
+		
+			.button {
+    width: 110px;
+   
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+		}
+		.button img{
+			    width: 100%;
+    border-radius: 70px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="popup-container">
+		<div id="nav">
+			<a href="index.html" style="margin-left: 0px;">Home</a>
+			<a href="pic.html">Pictures</a>
+			<a href="in.html">Place of Interested</a>
+			<a href="vid.html">Video</a>
+		</div>
+		<div class="img-flex"></div>
+	</div>
+	<div class="button">
+		<img src="images/but.png"/>
+	</div>
+	<audio src="bg.mp3" id="Jaudio" class="media-audio" autoplay preload loop="loop"></audio>  
+ 
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/fragment.js"></script>
+<script type="text/javascript">
+$(function() {
+	var fragmentConfig = {
+		container : '.img-flex',//显示容器
+		line : 10,//多少行
+		column : 24,//多少列
+		width : 1000,//显示容器的宽度
+		animeTime : 10000,//最长动画时间,图片的取值将在 animeTime*0.33 + animeTime*0.66之前取值 
+		img : 'images/1.jpg'//图片路径
+	};
+	fragmentImg(fragmentConfig);
+});
+function audioAutoPlay(id){  
+    var audio = document.getElementById(id),  
+        play = function(){  
+            audio.play();  
+            document.removeEventListener("touchstart",play, false);  
+        };  
+    audio.play();  
+    document.addEventListener("WeixinJSBridgeReady", function () {  
+        play();  
+    }, false);  
+    document.addEventListener('YixinJSBridgeReady', function() {  
+        play();  
+    }, false);  
+    document.addEventListener("touchstart",play, false);  
+}  
+audioAutoPlay('Jaudio');
+</script>
+</html>
